@@ -10,7 +10,7 @@ export function useFetchTransfers(
   const { baseClient: client } = useAragonSDKContext();
 
   const result = useQuery<Transfer[] | null>({
-    queryKey: ["daoTransfers", queryParams],
+    queryKey: ["daoTransfers", queryParams.daoAddressOrEns],
     queryFn: async () =>
       client.methods.getDaoTransfers({
         daoAddressOrEns: "",
