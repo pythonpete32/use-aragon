@@ -1,6 +1,5 @@
 import { Client, Context, ContextParams, ContextPlugin, TokenVotingClient } from "@aragon/sdk-client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { useSigner } from "wagmi";
 
 interface AragonSDKWrapperContext {
@@ -9,7 +8,7 @@ interface AragonSDKWrapperContext {
 
 const AragonSDKContext = createContext({});
 
-function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Element {
+export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Element {
   const [context, setContext] = useState<Context | undefined>(undefined);
   const [baseClient, setBaseClient] = useState<Client | undefined>(undefined);
   const [tokenVotingClient, setTokenVotingClient] = useState<TokenVotingClient | undefined>(undefined);
@@ -49,15 +48,4 @@ function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Element {
 
 export function useAragonSDKContext(): any {
   return useContext(AragonSDKContext);
-}
-
-export function AragonProvider({ children }: { children: JSX.Element }): JSX.Element {
-  return (
-    <AragonSDKWrapper>
-      <>
-        {children}
-        <ReactQueryDevtools initialIsOpen={false} />
-      </>
-    </AragonSDKWrapper>
-  );
 }
