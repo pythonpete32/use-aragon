@@ -1,8 +1,6 @@
 <h1 align="center">useAragon 🦅</h1>
 
-
 <h2 align="center">React Hooks for Aragon OSx</h2>
-
 
 <p align="center">
   <a href="https://reactjs.org/">React</a> 🤝 <a href="https://www.aragon.org">Aragon OSx</a>
@@ -10,24 +8,31 @@
 
 **Standing on the shoulders of these chads (aka, dependencies):**
 
-- [wagmi](https://wagmi.sh/)
-- [ethers](https://docs.ethers.io/v5/)
+- [Aragon SDK](https://github.com/aragon/sdk/)
 - [reactQuery](https://react-query-v3.tanstack.com/)
+- [ethers](https://docs.ethers.io/v5/)
+- [wagmi](https://wagmi.sh/)
 
 **Jump straight to the [Hooks Reference](#hooks-reference)**
+
+# Motivation
+
+`useAragon` is a library of React hooks that make it easy to integrate your Aragon OSx DAO directly into your dApps UI. Using the useAragon library, developers can easily create highly performant and responsive web applications that interact with Aragon DAOs, without having to worry about the intricacies of interacting with the contracts.
+
+The Aragon SDK abstract away much of the complexity of interacting with the Aragon protocol, useAragon further simplifies the process by providing a set of hooks that encapsulate common interactions, managing state, caching, deduping, lazy loading, dev tools, and a bunch more optimizations. All with typescript niceness sprinkled in
 
 # Example
 
 ```typescript
-const { data: daos, isLoading, isError } = useFetchDaos();
+const { daos, isLoading, isError } = useFetchDaos();
 
-const { data: dao } = useFetchDao("aragon.dao.eth");
+const { dao } = useFetchDao("aragon.dao.eth");
 
-const { data: members } = useFetchMembers(votingAddress);
+const { members } = useFetchMembers(votingAddress);
 
-const { data: votes } = useFetchVotes(votingAddress, {
+const { votes } = useFetchVotes(votingAddress, {
   onSuccess: (data) => console.log(data),
-  onError: (error) => console.log(error)
+  onError: (error) => console.log(error),
 });
 ```
 
@@ -48,22 +53,13 @@ pnpm add useAragon
 
 ## Basic
 
-1. Your app must first be wrapped in a Wagmi context and a Aragon context. the Aragon context two props
-- providers: the networks your app will use
-- mode: `development` | `production`, (development mode adds devtools to your UI)
+1. Your app must first be wrapped in a Wagmi context and a Aragon context
 
 ```typescript
-
-const providers = {
-  goerli: "",
-  polygon: "",
-  mainnet: "",
-}
-
 function App() {
   return (
     <WagmiConfig client={client}>
-      <AragonProvider config={providers} mode="development">
+      <AragonProvider>
         <DApp />
       </AragonProvider>
     </WagmiConfig>
@@ -83,16 +79,13 @@ const { data: dao } = useFetchDao("aragon.dao.eth");
 
 3. The return value of any Fetch hook is...
 
-4. The return value of any Mutation hook (e.g. `useDepositEth`) is.... 
-
+4. The return value of any Mutation hook (e.g. `useDepositEth`) is....
 
 Full API specification is below in the [hooks](#hooks) section.
 
 ## Advanced
 
-
 # Hooks Reference
-
 
 - [Query](#Query)
   - [useFetchDao](#useFetchDao)
@@ -109,40 +102,43 @@ _[Aragon Reference](https://github.com/aragon/sdk/blob/develop/modules/client/ex
 
 Get information in an individual DAO
 
-
 #### Usage
-```typescript
-import { useFetchDao } from 'useAragon'
 
-const daoAddressOrEns = "aragon.dao.eth"
+```typescript
+import { useFetchDao } from "useAragon";
+
+const daoAddressOrEns = "aragon.dao.eth";
 
 function App() {
-  const { data: dao, isLoading, isError } = useFetchDao(daoAddressOrEns)
- 
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Error!</div>
-  return <pre>{JSON.Stringify(dao, null, 2)}</pre>
+  const { dao, isLoading, isError } = useFetchDao(daoAddressOrEns, options);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error!</div>;
+  return <pre>{JSON.Stringify(dao, null, 2)}</pre>;
 }
 ```
+
 #### Return type
+
 ```typescript
 type DaoDetails = {
-    address: string;
-    ensDomain: string;
-    metadata: DaoMetadata;
-    creationDate: Date;
-    plugins: InstalledPluginListItem[];
+  address: string;
+  ensDomain: string;
+  metadata: DaoMetadata;
+  creationDate: Date;
+  plugins: InstalledPluginListItem[];
 };
 ```
 
 #### Options
+
 ```typescript
 type Options = {
   enabled?: boolean;
   onSuccess?: (data: any) => void;
   onError?: (error: any) => void;
   onSettled?: (data: any, error: any) => void;
-}
+};
 ```
 
 ### useFetchDaos
@@ -150,6 +146,5 @@ type Options = {
 ### useFetchDaoBalances
 
 ### useFetchTransfersuseFetchTransfers
-
 
 _Made with 🔥 by [AbuUsama](https://twitter.com/AaronAbuUsama)_
