@@ -1,11 +1,7 @@
 import { DaoListItem, IDaoQueryParams, SortDirection } from "@aragon/sdk-client";
-import { QueryKey, useQuery, UseQueryOptions, UseQueryResult } from "react-query";
-
+import { QueryKey, useQuery, UseQueryOptions } from "react-query";
 import { useAragonSDKContext } from "../..";
-
-interface FetchDaosResult extends Omit<UseQueryResult<DaoListItem[], unknown>, "data"> {
-  daos: DaoListItem[];
-}
+import { FetchDaosResult } from "../../types";
 
 export function useFetchDaos(
   queryParams?: IDaoQueryParams,
@@ -20,7 +16,6 @@ export function useFetchDaos(
         skip: 0,
         limit: 10,
         direction: SortDirection.ASC,
-        // sortBy: DaoSortBy.POPULARITY,
         ...queryParams,
       }),
     enabled: !!client,
