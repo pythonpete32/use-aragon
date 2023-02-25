@@ -11,7 +11,7 @@ export function useFetchDaoBalances(
   const { baseClient: client } = useAragonSDKContext();
 
   const result = useQuery<AssetBalance[] | null>({
-    queryKey: ["daoBalance", queryParams],
+    queryKey: ["daoBalance", queryParams.daoAddressOrEns],
     queryFn: async () =>
       client.methods.getDaoBalances({
         daoAddressOrEns: "",
