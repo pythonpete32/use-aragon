@@ -8,8 +8,8 @@ interface FetchDaosResult extends Omit<UseQueryResult<DaoListItem[], unknown>, "
 }
 
 export function useFetchDaos(
-  queryParams: IDaoQueryParams = {},
-  options: UseQueryOptions<DaoListItem[], unknown, DaoListItem[], QueryKey>,
+  queryParams?: IDaoQueryParams,
+  options?: UseQueryOptions<DaoListItem[], unknown, DaoListItem[], QueryKey>,
 ): FetchDaosResult {
   const { baseClient: client } = useAragonSDKContext();
 
