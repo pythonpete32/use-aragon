@@ -1,11 +1,17 @@
-import { ITransferQueryParams, Transfer, TransferSortBy, SortDirection, TransferType } from "@aragon/sdk-client";
-import { QueryKey, useQuery, UseQueryOptions } from "react-query";
-import { FetchTransfersResult } from "../../types";
+import {
+  ITransferQueryParams as FetchTransferParams,
+  Transfer,
+  TransferSortBy,
+  SortDirection,
+  TransferType,
+} from "@aragon/sdk-client";
+import { useQuery } from "react-query";
+import { FetchTransferOptions, FetchTransfersResult } from "../../types";
 import { useAragonSDKContext } from "../context";
 
 export function useFetchTransfers(
-  queryParams: ITransferQueryParams = {},
-  options?: UseQueryOptions<Transfer[] | null, unknown, Transfer[] | null, QueryKey>,
+  queryParams: FetchTransferParams = {},
+  options?: FetchTransferOptions,
 ): FetchTransfersResult {
   const { baseClient: client } = useAragonSDKContext();
 

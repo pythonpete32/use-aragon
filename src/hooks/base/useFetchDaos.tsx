@@ -1,12 +1,9 @@
 import { DaoListItem, IDaoQueryParams, SortDirection } from "@aragon/sdk-client";
-import { QueryKey, useQuery, UseQueryOptions } from "react-query";
+import { useQuery } from "react-query";
 import { useAragonSDKContext } from "../..";
-import { FetchDaosResult } from "../../types";
+import { FetchDaosResult, FetchDaosOptions } from "../../types";
 
-export function useFetchDaos(
-  queryParams?: IDaoQueryParams,
-  options?: UseQueryOptions<DaoListItem[], unknown, DaoListItem[], QueryKey>,
-): FetchDaosResult {
+export function useFetchDaos(queryParams?: IDaoQueryParams, options?: FetchDaosOptions): FetchDaosResult {
   const { baseClient: client } = useAragonSDKContext();
 
   const result = useQuery<DaoListItem[]>({

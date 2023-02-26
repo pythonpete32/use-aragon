@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { Client } from "@aragon/sdk-client";
 import { DaoDepositStepValue, DepositEthParams } from "@aragon/sdk-client/dist/interfaces";
-import { useMutation, UseMutationOptions } from "react-query";
+import { useMutation } from "react-query";
 
-import { UseDepositEthResult } from "../../types";
+import { DepositEthOptions, DepositEthResult } from "../../types";
 import { useAragonSDKContext } from "../context";
 
 const deposit = async (client: Client, depositParams: DepositEthParams): Promise<DaoDepositStepValue> => {
@@ -12,10 +12,7 @@ const deposit = async (client: Client, depositParams: DepositEthParams): Promise
   return firstStep.value;
 };
 
-export function useDepositEth(
-  depositParams: DepositEthParams,
-  options?: UseMutationOptions<DaoDepositStepValue, unknown, DepositEthParams, unknown>,
-): UseDepositEthResult {
+export function useDepositEth(depositParams: DepositEthParams, options?: DepositEthOptions): DepositEthResult {
   const { baseClient: client } = useAragonSDKContext();
 
   const result = useMutation({

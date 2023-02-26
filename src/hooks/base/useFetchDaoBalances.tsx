@@ -1,12 +1,12 @@
 import { AssetBalance, SortDirection } from "@aragon/sdk-client";
 import { DaoBalancesQueryParams } from "@aragon/sdk-client/dist/interfaces";
-import { QueryKey, useQuery, UseQueryOptions } from "react-query";
-import { FetchDaoBalancesResult } from "../../types";
+import { useQuery } from "react-query";
+import { FetchDaoBalancesResult, FetchDaoBalancesOptions } from "../../types";
 import { useAragonSDKContext } from "../context";
 
 export function useFetchDaoBalances(
   queryParams: DaoBalancesQueryParams = {},
-  options?: UseQueryOptions<AssetBalance[] | null, unknown, AssetBalance[] | null, QueryKey>,
+  options?: FetchDaoBalancesOptions,
 ): FetchDaoBalancesResult {
   const { baseClient: client } = useAragonSDKContext();
 
@@ -27,6 +27,5 @@ export function useFetchDaoBalances(
     ...options,
   });
 
-  const daoBalances = result?.data ?? null;
-  return { ...result, daoBalances };
+  return { daoBalances: result?.data ?? null, ...result };
 }

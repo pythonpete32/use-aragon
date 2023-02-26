@@ -1,12 +1,12 @@
 import { GasFeeEstimation } from "@aragon/sdk-client";
 import { DepositEthParams } from "@aragon/sdk-client/dist/interfaces";
-import { QueryKey, useQuery, UseQueryOptions } from "react-query";
-import { EstimateDepositEthResult } from "../../types";
+import { useQuery } from "react-query";
+import { EstimateDepositEthOptions, EstimateDepositEthResult } from "../../types";
 import { useAragonSDKContext } from "../context";
 
 export function useEstimateDepositEth(
   depositParams: DepositEthParams,
-  options?: UseQueryOptions<GasFeeEstimation | null, unknown, GasFeeEstimation | null, QueryKey>,
+  options?: EstimateDepositEthOptions,
 ): EstimateDepositEthResult {
   const { baseClient: client } = useAragonSDKContext();
 
@@ -20,6 +20,5 @@ export function useEstimateDepositEth(
     ...options,
   });
 
-  const estimatedGas = result?.data ?? null;
-  return { ...result, estimatedGas };
+  return { estimatedGas: result?.data ?? null, ...result };
 }

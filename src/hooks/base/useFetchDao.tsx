@@ -1,12 +1,9 @@
 import { DaoDetails } from "@aragon/sdk-client";
-import { useQuery, UseQueryOptions } from "react-query";
+import { useQuery } from "react-query";
 import { useAragonSDKContext } from "../..";
-import { FetchDaoResult } from "../../types";
+import { Address, FetchDaoResult, FetchDaoOptions } from "../../types";
 
-export function useFetchDao(
-  daoAddressOrEns: string,
-  options?: UseQueryOptions<DaoDetails | null, unknown, DaoDetails | null>,
-): FetchDaoResult {
+export function useFetchDao(daoAddressOrEns: Address, options?: FetchDaoOptions): FetchDaoResult {
   const { baseClient: client } = useAragonSDKContext();
 
   const result = useQuery<DaoDetails | null>({
@@ -18,8 +15,8 @@ export function useFetchDao(
     },
     ...options,
   });
-
-  const dao = result?.data ?? null;
-
-  return { ...result, dao };
+  return {
+    dao: result.data ?? null,
+    ...result,
+  };
 }
