@@ -132,3 +132,11 @@ export interface FetchMultisigSettingsOptions extends QueryOptions<MultisigVotin
 export interface FetchMultisigSettingsResult extends BaseQueryResultData<MultisigVotingSettings | null> {
   multisigSettings: MultisigVotingSettings | null;
 }
+
+export declare interface DepositBaseParams {
+  daoAddressOrEns: string;
+}
+export enum DaoDepositSteps {
+  DEPOSITING = "depositing",
+  DONE = "done",
+}
