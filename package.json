@@ -1,49 +1,62 @@
 {
   "name": "use-aragon",
-  "version": "0.0.0",
-  "description": "React hooks for Aragon OSx",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pythonpete32/use-aragon"
-  },
+  "version": "0.0.3",
+  "description": "",
+  "source": "src/index.ts",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
-    "prepublish": "tsc",
-    "format": "prettier --check 'src/**/*.ts*'",
-    "format:write": "prettier --write 'src/**/*.ts*'",
-    "lint": "eslint 'src/**/*.ts*'",
-    "lint:fix": "eslint --fix 'src/**/*.ts*'",
-    "prepare": "husky install"
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "lint": "eslint ./src --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix",
+    "tsc": "tsc",
+    "dev": "microbundle watch",
+    "build:esm": "tsc",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "clean": "rimraf types cjs esm",
+    "build": "yarn clean && yarn build:esm && yarn build:cjs",
+    "preversion": "npm run clean && npm run build && npm run test",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
+    "postversion": "git push && git push --tags"
   },
-  "lint-staged": {
-    "*.ts*": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@types/react": "^18.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.54.1",
+    "auto-changelog": "^2.4.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.5.0",
+    "microbundle": "^0.15.1",
+    "prettier": "^2.8.4",
+    "react": "^18.2.0",
+    "rimraf": "^4.3.1",
+    "ts-jest": "^29.0.5",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
+  },
+  "auto-changelog": {
+    "commitLimit": false,
+    "template": "keepachangelog"
   },
   "dependencies": {
-    "@aragon/sdk-client": "0.22.0-beta",
+    "@aragon/sdk-client": "^1.0.1",
     "react-query": "^3.39.3",
-    "ethers": "^5.7.2",
-    "wagmi": "~0.11.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "eslint": "^8.23.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard-with-typescript": "^22.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.5",
-    "eslint-plugin-promise": "^6.0.1",
-    "eslint-plugin-react": "^7.31.8",
-    "eslint-plugin-simple-import-sort": "^8.0.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "typescript": "^4.8.3"
-  },
-  "author": "Aaron Abu Usama <Aaron@DAOresear.ch>",
-  "license": "MIT"
+    "wagmi": "^0.12.1"
+  }
 }

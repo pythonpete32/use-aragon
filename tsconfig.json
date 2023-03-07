@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "esModuleInterop": false,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "lib": ["es2019", "es2017", "dom"],
-    "module": "commonjs",
+    "jsx": "react",
     "moduleResolution": "node",
-    "outDir": "dist",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "baseUrl": "src",
+    "outDir": "./esm",
+    "declaration": true,
+    "declarationDir": "./types",
+    "importHelpers": true,
+    "rootDir": "src",
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
     "strict": true,
-    "target": "es2021",
-    "useDefineForClassFields": true
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true
   },
-  "exclude": ["node_modules", "**/dist/**"],
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "include": ["src"],
+  "$schema": "https://json.schemastore.org/tsconfig"
 }
