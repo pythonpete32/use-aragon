@@ -1,0 +1,67 @@
+---
+description: A hook to fetch a list of DAOs.
+---
+
+# useFetchDao
+
+A hook to fetch a DAOs information.
+
+### Component usage
+
+```tsx
+import React, { useState } from "react";
+import { useFetchDao } from "use-aragon";
+
+function App() {
+  const [daoName, setDaoName] = useState("");
+  const { dao, isLoading, isError } = useFetchDao(daoName);
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={daoName}
+        onChange={(e) => setDaoName(e.target.value)}
+      />
+
+      {isError && <div>Error fetching DAO data</div>}
+      {isLoading && <div>Loading...</div>}
+
+      {dao && (
+        <div>
+          <h2>{dao.name}</h2>
+          <p>{dao.description}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Returns
+
+```tsx
+{
+  address: string;
+  ensDomain: string;
+  metadata: {
+    name: string;
+    description: string;
+    avatar?: string;
+    links: DaoResourceLink[];
+  };
+  creationDate: Date;
+  plugins: {
+    id: string;
+    instanceAddress: string;
+    version: string;
+  }[];
+}
+```
+
+### Parameters
+
+- `daoAddressOrEns`: (optional)
+  the address or ENS domain of the DAO to fetch. If not provided, the hook will not run
