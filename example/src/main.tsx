@@ -19,7 +19,14 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <WagmiConfig client={client}>
       <AragonProvider>
         <ConnectKitProvider>
-          <MantineProvider withGlobalStyles withNormalizeCSS>
+          <MantineProvider
+            withGlobalStyles
+            withNormalizeCSS
+            theme={{
+              colorScheme: 'dark',
+              fontFamily: 'Inter, sans-serif',
+            }}
+          >
             <App />
           </MantineProvider>
         </ConnectKitProvider>
