@@ -23,7 +23,6 @@ export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Ele
     undefined
   );
   const { chain } = useNetwork();
-  console.log('chain', chain);
 
   const signer = useSigner().data ?? undefined;
 
