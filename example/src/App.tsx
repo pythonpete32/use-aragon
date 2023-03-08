@@ -12,6 +12,7 @@ import { Links } from './constants/links';
 import { Test } from './pages';
 import { HeroTitle } from './components/hero';
 import { NotFoundTitle } from './pages/404';
+import { UseFetchDaos } from './pages/UseFetchDaos';
 
 export default function App() {
   return (
@@ -20,7 +21,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HeroTitle />} />
           <Route path="use-fetch-dao" element={<UseFetchDao />} />
-          <Route path="use-fetch-daos" element={<Test />} />
+          <Route path="use-fetch-daos" element={<UseFetchDaos />} />
           <Route path="*" element={<NotFoundTitle />} />
         </Routes>
       </AppLayout>
