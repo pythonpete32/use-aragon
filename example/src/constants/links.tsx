@@ -1,45 +1,51 @@
+import { UseFetchDao, Test } from '../pages';
 export const Links = [
   {
-    link: '#1',
+    link: '/',
     label: 'Core',
     links: [
       {
         link: '/use-fetch-dao',
         label: 'useFetchDao',
+        component: UseFetchDao,
       },
       {
         link: '/use-fetch-daos',
         label: 'useFetchDaos',
+        component: Test,
       },
     ],
   },
   {
-    link: '#2',
+    link: '/',
     label: 'Token Voting',
     links: [
       {
         link: '/test',
         label: 'Test',
+        component: Test,
       },
     ],
   },
   {
-    link: '#3',
+    link: '/',
     label: 'Multisig',
     links: [
       {
         link: '/test',
         label: 'Test',
+        component: Test,
       },
     ],
   },
   {
-    link: '#4',
+    link: '/',
     label: 'Address List',
     links: [
       {
         link: '/test',
         label: 'Test',
+        component: Test,
       },
     ],
   },

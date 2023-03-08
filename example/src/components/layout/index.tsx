@@ -1,6 +1,7 @@
 import { AppShell, Flex } from '@mantine/core';
 import { HeaderMenu } from './header';
 import { Links } from '../../constants/links';
+import { Outlet } from 'react-router-dom';
 
 export function AppLayout({ children }) {
   const links = Links;
@@ -16,7 +17,7 @@ export function AppLayout({ children }) {
         },
       })}
     >
-      <Flex justify="center" align="center" style={{ height: '100%', paddingTop: '50px' }}>
+      <Flex justify="center" align="center" style={{ height: '100%' }}>
         {children}
       </Flex>
     </AppShell>
