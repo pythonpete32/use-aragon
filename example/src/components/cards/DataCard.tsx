@@ -23,8 +23,15 @@ export function DataCard({ name, data }: DataCardProps) {
         <Group position="apart" mt="md" mb="xs">
           <Text weight={500}>{name}</Text>
         </Group>
-
-        {data?.data && <Prism language="tsx">{JSON.stringify(data?.data, null, 2)}</Prism>}
+        {data?.data && (
+          <Prism language="tsx">
+            {JSON.stringify(
+              data?.data,
+              (key, value) => (typeof value === 'bigint' ? value.toString() : value),
+              2
+            )}
+          </Prism>
+        )}
         {data?.isLoading && <Text>Loading...</Text>}
         {data?.isError && <Text>Error!!!</Text>}
       </>

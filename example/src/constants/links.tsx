@@ -1,4 +1,5 @@
 import { UseFetchDao, Test } from '../pages';
+import { UseFetchTransfers } from '../pages/UseFetchTransfers';
 export const Links = [
   {
     link: '/',
@@ -13,6 +14,11 @@ export const Links = [
         link: '/use-fetch-daos',
         label: 'useFetchDaos',
         component: Test,
+      },
+      {
+        link: '/use-fetch-transfers',
+        label: 'useFetchTransfers',
+        component: UseFetchTransfers,
       },
     ],
   },
