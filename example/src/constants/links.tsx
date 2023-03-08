@@ -1,5 +1,11 @@
-import { UseFetchDao, Test } from '../pages';
-import { UseFetchTransfers } from '../pages/UseFetchTransfers';
+import {
+  UseFetchDao,
+  Test,
+  UseFetchTransfers,
+  UseFetchDaoBalances,
+  UseEstimateDepositEth,
+} from '../pages';
+
 export const Links = [
   {
     link: '/',
@@ -19,6 +25,16 @@ export const Links = [
         link: '/use-fetch-transfers',
         label: 'useFetchTransfers',
         component: UseFetchTransfers,
+      },
+      {
+        link: '/use-fetch-balances',
+        label: 'useFetchDaoBalances',
+        component: UseFetchDaoBalances,
+      },
+      {
+        link: '/use-estimate-deposit-eth',
+        label: 'useEstimateDepositEth',
+        component: UseEstimateDepositEth,
       },
     ],
   },
