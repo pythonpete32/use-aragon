@@ -11,22 +11,27 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
-
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: pnpm test --ci --coverage --maxWorkers=2
 
       - name: Build
-        run: yarn build
+        run: pnpm build

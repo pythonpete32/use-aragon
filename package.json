@@ -8,7 +8,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=16"
   },
   "scripts": {
     "start": "tsdx watch",
@@ -22,6 +22,7 @@
   "peerDependencies": {
     "react": ">=16"
   },
+  "packageManager": "pnpm",
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
