@@ -1,9 +1,14 @@
-import { MantineProvider, Text } from '@mantine/core';
+import { Text } from '@mantine/core';
+import { ConnectKitButton } from 'connectkit';
+import { Center, Stack, Flex } from '@mantine/core';
 
 export default function App() {
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
-      <Text>Welcome to Mantine!</Text>
-    </MantineProvider>
+    <Flex justify="center" align="center" style={{ height: '100vh' }}>
+      <Stack mx="auto">
+        <ConnectKitButton />
+        <Text>Hello, world!</Text>
+      </Stack>
+    </Flex>
   );
 }
