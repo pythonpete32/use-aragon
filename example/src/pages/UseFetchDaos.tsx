@@ -4,8 +4,7 @@ import { DataCard, QueryType } from '../components/cards/DataCard';
 import { ExampleCard } from '../components/cards/ExampleCard';
 
 export function UseFetchDaos() {
-  const demoCode = `import { DaoSortBy, IDaoQueryParams, SortDirection } from '@aragon/sdk-client';
-  import { useFetchDaos } from 'use-aragon';
+  const demoCode = `import { useFetchDaos, DaoSortBy, IDaoQueryParams, SortDirection } from 'use-aragon';
   
   // All parameters are optional
   const parameters: IDaoQueryParams = {

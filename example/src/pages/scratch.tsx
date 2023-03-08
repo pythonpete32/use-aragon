@@ -1,10 +1,10 @@
 import {
+  useFetchTransfers,
   ITransferQueryParams,
   SortDirection,
   TransferSortBy,
   TransferType,
-} from '@aragon/sdk-client';
-import { useFetchTransfers } from 'use-aragon';
+} from 'use-aragon';
 
 const queryParams: ITransferQueryParams = {
   sortBy: TransferSortBy.CREATED_AT,
