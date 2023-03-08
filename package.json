@@ -11,6 +11,7 @@
     "node": ">=16"
   },
   "scripts": {
+    "dev": "cd ./example && pnpm dev",
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
