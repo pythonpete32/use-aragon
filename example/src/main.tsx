@@ -4,7 +4,7 @@ import App from './App';
 import { MantineProvider } from '@mantine/core';
 import { WagmiConfig, createClient } from 'wagmi';
 import { ConnectKitProvider, getDefaultClient } from 'connectkit';
-
+import { AragonProvider } from 'use-aragon';
 // const alchemyId = process.env.ALCHEMY_ID;
 
 const client = createClient(
@@ -17,11 +17,13 @@ const client = createClient(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <WagmiConfig client={client}>
-      <ConnectKitProvider>
-        <MantineProvider withGlobalStyles withNormalizeCSS>
-          <App />
-        </MantineProvider>
-      </ConnectKitProvider>
+      <AragonProvider>
+        <ConnectKitProvider>
+          <MantineProvider withGlobalStyles withNormalizeCSS>
+            <App />
+          </MantineProvider>
+        </ConnectKitProvider>
+      </AragonProvider>
     </WagmiConfig>
   </React.StrictMode>
 );

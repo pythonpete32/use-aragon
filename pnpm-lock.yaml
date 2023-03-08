@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@aragon/sdk-client': 1.0.0
+  '@aragon/sdk-client': ^1.0.2
   '@size-limit/preset-small-lib': ^8.2.4
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
@@ -17,7 +17,7 @@ specifiers:
   wagmi: ~0.11.0
 
 dependencies:
-  '@aragon/sdk-client': 1.0.0
+  '@aragon/sdk-client': 1.0.2
   ethers: 5.7.2
   react-query: 3.39.3_biqbaboplfbrettd7655fr4n2y
   wagmi: 0.11.7_6niq2jm3j2wfrjwac2th7yh3n4
@@ -53,8 +53,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@aragon/sdk-client/1.0.0:
-    resolution: {integrity: sha512-LEaI13L+axoRooAi70H/zn6k0OSe7aAXDKKQpXzwcpXdujCw0kEQoqnQs9o6A36ccWx6iKaPUUUPLC5hzUIX6g==}
+  /@aragon/sdk-client/1.0.2:
+    resolution: {integrity: sha512-6YfUp4XXMgzQkK3PLiRF3DbqZ5CVLAEVjZOoDaoFbh3da6XUQZaJGT2xToD0gwQ0xyIUUj04zRZYbuTSizP+Jw==}
     engines: {node: '>=16'}
     dependencies:
       '@aragon/osx-ethers': 1.0.0
