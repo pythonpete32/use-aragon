@@ -26,27 +26,21 @@ The Aragon SDK abstract away much of the complexity of interacting with the Arag
 ```typescript
 const { daos, isLoading, isError } = useFetchDaos();
 
-const { dao } = useFetchDao("aragon.dao.eth");
+const { dao } = useFetchDao('aragon.dao.eth');
 
 const { members } = useFetchMembers(votingAddress);
 
 const { votes } = useFetchVotes(votingAddress, {
-  onSuccess: (data) => console.log(data),
-  onError: (error) => console.log(error),
+  onSuccess: data => console.log(data),
+  onError: error => console.log(error),
 });
 ```
 
 # Installation
 
 ```bash
-# npm
-npm install --save useAragon
-
-# yarn
-yarn add useAragon
-
 # pnpm
-pnpm add useAragon
+pnpm add use-aragon
 ```
 
 # Usage
@@ -67,84 +61,42 @@ function App() {
 }
 ```
 
-2. You can then use the Lens hooks in any components inside of your DApp component:
+2. You can then use the hooks in any components inside of your DApp component:
 
 ```typescript
-import { useFetchDao } from "useAragon";
+import { useFetchDao } from 'useAragon';
 
 // ...
 
-const { data: dao } = useFetchDao("aragon.dao.eth");
+const { data: dao } = useFetchDao('aragon.dao.eth');
 ```
 
-3. The return value of any Fetch hook is...
+# Development
 
-4. The return value of any Mutation hook (e.g. `useDepositEth`) is....
+The recommended workflow is to run TSDX in one terminal:
 
-Full API specification is below in the [hooks](#hooks) section.
-
-## Advanced
-
-# Hooks Reference
-
-- [Query](#Query)
-  - [useFetchDao](#useFetchDao)
-  - [useFetchDaos](#useFetchDaos)
-  - [useFetchDaoBalances](#useFetchDaoBalances)
-  - [useFetchTransfers](#useFetchTransfers)
-- [Write](#Write)
-
-## Query
-
-### useFetchDao
-
-_[Aragon Reference](https://github.com/aragon/sdk/blob/develop/modules/client/examples/00-client/06-get-dao.ts)_
-
-Get information in an individual DAO
-
-#### Usage
-
-```typescript
-import { useFetchDao } from "useAragon";
-
-const daoAddressOrEns = "aragon.dao.eth";
-
-function App() {
-  const { dao, isLoading, isError } = useFetchDao(daoAddressOrEns, options);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error!</div>;
-  return <pre>{JSON.Stringify(dao, null, 2)}</pre>;
-}
+```bash
+pnpm start
 ```
 
-#### Return type
+This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
 
-```typescript
-type DaoDetails = {
-  address: string;
-  ensDomain: string;
-  metadata: DaoMetadata;
-  creationDate: Date;
-  plugins: InstalledPluginListItem[];
-};
+Then run the example inside another:
+
+```bash
+cd example
+pnpm i
+pnpm start
 ```
 
-#### Options
+The example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
 
-```typescript
-type Options = {
-  enabled?: boolean;
-  onSuccess?: (data: any) => void;
-  onError?: (error: any) => void;
-  onSettled?: (data: any, error: any) => void;
-};
-```
+To do a one-off build, use `pnpm run build` or `yarn build`.
 
-### useFetchDaos
+To run tests, use `pnpm test` or `yarn test`.
 
-### useFetchDaoBalances
+### Bundle analysis
 
-### useFetchTransfersuseFetchTransfers
+Calculate the real cost with `pnpm run size` and visulize it with `pnpm run analyze`.
 
 _Made with 🔥 by [AbuUsama](https://twitter.com/AaronAbuUsama)_

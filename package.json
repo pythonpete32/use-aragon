@@ -1,49 +1,61 @@
 {
-  "name": "use-aragon",
-  "version": "0.0.0",
-  "description": "React hooks for Aragon OSx",
+  "version": "0.1.0",
+  "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pythonpete32/use-aragon"
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
   },
   "scripts": {
-    "prepublish": "tsc",
-    "format": "prettier --check 'src/**/*.ts*'",
-    "format:write": "prettier --write 'src/**/*.ts*'",
-    "lint": "eslint 'src/**/*.ts*'",
-    "lint:fix": "eslint --fix 'src/**/*.ts*'",
-    "prepare": "husky install"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
-  "lint-staged": {
-    "*.ts*": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+  "peerDependencies": {
+    "react": ">=16"
   },
-  "dependencies": {
-    "@aragon/sdk-client": "0.22.0-beta",
-    "react-query": "^3.39.3",
-    "ethers": "^5.7.2",
-    "wagmi": "~0.11.0"
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
   },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "use-aragon",
+  "author": "pythonpete32",
+  "module": "dist/use-aragon.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/use-aragon.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/use-aragon.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "eslint": "^8.23.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard-with-typescript": "^22.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.5",
-    "eslint-plugin-promise": "^6.0.1",
-    "eslint-plugin-react": "^7.31.8",
-    "eslint-plugin-simple-import-sort": "^8.0.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "typescript": "^4.8.3"
-  },
-  "author": "Aaron Abu Usama <Aaron@DAOresear.ch>",
-  "license": "MIT"
+    "@size-limit/preset-small-lib": "^8.2.4",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "husky": "^8.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "size-limit": "^8.2.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
+  }
 }
