@@ -13,7 +13,7 @@ const client = createClient(
   getDefaultClient({
     appName: 'Your App Name',
     alchemyId: '',
-    chains: [mainnet, goerli],
+    chains: [goerli],
   })
 );
 

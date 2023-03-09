@@ -11,6 +11,7 @@ import {
   UseEstimateDeposit,
 } from './pages';
 import { UseDepositEth } from './pages/UseDepositEth';
+import { UseDepositERC20 } from './pages/UseDepositERC20';
 
 export default function App() {
   return (
@@ -24,7 +25,7 @@ export default function App() {
           <Route path="use-fetch-balances" element={<UseFetchDaoBalances />} />
           <Route path="use-estimate-deposit" element={<UseEstimateDeposit />} />
           <Route path="use-deposit-eth" element={<UseDepositEth />} />
-
+          <Route path="use-deposit-erc20" element={<UseDepositERC20 />} />
           <Route path="*" element={<NotFoundTitle />} />
         </Routes>
       </AppLayout>
