@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "use-aragon": "link:..",
+    "use-aragon": "0.0.3-alpha.3",
     "@emotion/react": "^11.10.6",
     "@mantine/carousel": "^6.0.0",
     "@mantine/core": "^6.0.0",
