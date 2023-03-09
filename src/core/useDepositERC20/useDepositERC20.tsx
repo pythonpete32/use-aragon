@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import { Client } from '@aragon/sdk-client';
 import { DaoDepositSteps, DepositEthParams } from '@aragon/sdk-client/dist/interfaces';
-import { useMutation, UseMutationOptions, UseMutationResult } from 'react-query';
+import { useMutation, UseMutationOptions } from 'react-query';
 
 import { useAragon } from '../../context';
 
