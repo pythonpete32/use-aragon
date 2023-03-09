@@ -1,5 +1,5 @@
 import { Stack } from '@mantine/core';
-// import { useEstimateDeposit, TokenType } from 'use-aragon';
+import { useEstimateDeposit, TokenType } from 'use-aragon';
 import { DataCard, QueryType } from '../components/cards/DataCard';
 import { ExampleCard } from '../components/cards/ExampleCard';
 
@@ -21,17 +21,17 @@ export function UseEstimateDeposit() {
     return <div>{transfers.data && <pre>{JSON.stringify(transfers.data, null, 2)}</pre>}</div>;
   }`;
 
-  // const balances = useEstimateDeposit({
-  //   daoAddressOrEns: '0x76ad2ab54b29e03920b52c455c97004efc3581d8',
-  //   type: TokenType.NATIVE,
-  //   amount: 420n,
-  // });
+  const estimates = useEstimateDeposit({
+    daoAddressOrEns: '0x76ad2ab54b29e03920b52c455c97004efc3581d8',
+    type: TokenType.NATIVE,
+    amount: 420n,
+  });
 
   return (
     <Stack spacing="xl" align="center">
       <h1>useEstimateDepositEth</h1>
       <ExampleCard name="Example" type={QueryType.query} data={demoCode} />
-      {/* <DataCard name="Response" data={balances} /> */}
+      <DataCard name="Response" data={estimates} />
     </Stack>
   );
 }
