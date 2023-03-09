@@ -3,7 +3,7 @@ import { HeaderMenu } from './header';
 import { Links } from '../../constants/links';
 import { Outlet } from 'react-router-dom';
 
-export function AppLayout({ children }) {
+export function AppLayout({ children }: { children: React.ReactNode }) {
   const links = Links;
 
   return (
