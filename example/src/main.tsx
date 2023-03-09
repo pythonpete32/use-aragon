@@ -5,12 +5,15 @@ import { MantineProvider } from '@mantine/core';
 import { WagmiConfig, createClient } from 'wagmi';
 import { ConnectKitProvider, getDefaultClient } from 'connectkit';
 import { AragonProvider } from 'use-aragon';
+import { mainnet, goerli } from 'wagmi/chains';
+
 // const alchemyId = process.env.ALCHEMY_ID;
 
 const client = createClient(
   getDefaultClient({
     appName: 'Your App Name',
     alchemyId: '',
+    chains: [goerli],
   })
 );
 

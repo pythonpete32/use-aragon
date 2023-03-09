@@ -1,16 +1,16 @@
 import { Stack } from '@mantine/core';
-import { useFetchTransfers } from 'use-aragon';
+import { useFetchDaoBalances } from 'use-aragon';
 import { DataCard, QueryType } from '../components/cards/DataCard';
 import { ExampleCard } from '../components/cards/ExampleCard';
 
-export function UseFetchTransfers() {
+export function UseFetchDaoBalances() {
   const demoCode = `import {
     ITransferQueryParams,
     SortDirection,
     TransferSortBy,
     TransferType,
-  } from '@aragon/sdk-client';
-  import { useFetchTransfers } from 'use-aragon';
+    useFetchDaoBalances
+  } from 'use-aragon';
   
   // optional query params
   const queryParams: ITransferQueryParams = {
@@ -25,7 +25,7 @@ export function UseFetchTransfers() {
   
   const Demo = () => {
     // All query params are optional, however you must pass a daoAddressOrEns for the hook to run
-    const transfers = useFetchTransfers({
+    const transfers = useFetchDaoBalances({
       daoAddressOrEns: dao,
       ...queryParams, // These are default values, you can override them here
     });
@@ -36,15 +36,15 @@ export function UseFetchTransfers() {
     return <div>{transfers.data && <pre>{JSON.stringify(transfers.data, null, 2)}</pre>}</div>;
   }`;
 
-  const transfers = useFetchTransfers({
-    daoAddressOrEns: '0x59447788f9dcf2df550f257f3692a07f05b922d7',
+  const balances = useFetchDaoBalances({
+    daoAddressOrEns: '0x76ad2ab54b29e03920b52c455c97004efc3581d8',
   });
 
   return (
     <Stack spacing="xl" align="center">
-      <h1>useFetchTransfers</h1>
+      <h1>useFetchDaoBalances</h1>
       <ExampleCard name="Example" type={QueryType.query} data={demoCode} />
-      <DataCard name="Response" data={transfers} />
+      <DataCard name="Response" data={balances} />
     </Stack>
   );
 }

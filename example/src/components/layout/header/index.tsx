@@ -21,7 +21,6 @@ export function HeaderMenu({ links }: HeaderSearchProps) {
       );
     });
     if (menuItems) {
-      console.log('menuItems', link);
       return (
         <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
           <Menu.Target>
@@ -36,7 +35,6 @@ export function HeaderMenu({ links }: HeaderSearchProps) {
         </Menu>
       );
     }
-    console.log('menuItems outside', link);
     return (
       <a
         key={link.label}

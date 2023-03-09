@@ -1,6 +1,6 @@
 import { DaoDetails } from '@aragon/sdk-client';
 import { QueryKey, useQuery, UseQueryOptions } from 'react-query';
-import { useAragon } from '../..';
+import { useAragon } from '../../context';
 
 export function useFetchDao(
   daoAddressOrEns?: string | undefined,
