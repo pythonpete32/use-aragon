@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 import { Client } from '@aragon/sdk-client';
-import { DaoDepositSteps, DepositEthParams } from '@aragon/sdk-client/dist/interfaces';
+import { DaoDepositSteps, DepositParams } from '@aragon/sdk-client';
 import { useMutation, UseMutationOptions } from 'react-query';
 
 import { useAragon } from '../../context';
@@ -33,11 +33,11 @@ function reducer(state: DepositERC20State, update: Partial<DepositERC20State>) {
   return { ...state, ...update };
 }
 
-export function useDepositERC20(depositParams: DepositEthParams, options?: UseMutationOptions) {
+export function useDepositERC20(depositParams: DepositParams, options?: UseMutationOptions) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { baseClient: client } = useAragon();
 
-  const deposit = async (client: Client, depositParams: DepositEthParams) => {
+  const deposit = async (client: Client, depositParams: DepositParams) => {
     const steps = client.methods.deposit(depositParams);
     dispatch({ depositStatus: DepositERC20Status.DEPOSITING });
     for await (const step of steps) {

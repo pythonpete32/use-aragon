@@ -8,7 +8,7 @@ import {
   NotFoundTitle,
   UseFetchTransfers,
   UseFetchDaoBalances,
-  UseEstimateDepositEth,
+  UseEstimateDeposit,
 } from './pages';
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
           <Route path="use-fetch-daos" element={<UseFetchDaos />} />
           <Route path="use-fetch-transfers" element={<UseFetchTransfers />} />
           <Route path="use-fetch-balances" element={<UseFetchDaoBalances />} />
-          <Route path="use-estimate-deposit-eth" element={<UseEstimateDepositEth />} />
+          <Route path="use-estimate-deposit-eth" element={<UseEstimateDeposit />} />
 
           <Route path="*" element={<NotFoundTitle />} />
         </Routes>

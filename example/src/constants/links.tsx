@@ -3,7 +3,7 @@ import {
   Test,
   UseFetchTransfers,
   UseFetchDaoBalances,
-  UseEstimateDepositEth,
+  UseEstimateDeposit,
 } from '../pages';
 
 export const Links = [
@@ -34,7 +34,7 @@ export const Links = [
       {
         link: '/use-estimate-deposit-eth',
         label: 'useEstimateDepositEth',
-        component: UseEstimateDepositEth,
+        component: UseEstimateDeposit,
       },
     ],
   },

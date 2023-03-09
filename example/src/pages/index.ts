@@ -3,5 +3,5 @@ export * from './Test';
 export * from './UseFetchDaos';
 export * from './UseFetchTransfers';
 export * from './UseFetchDaoBalances';
-export * from './UseEstimateDepositEth';
+export * from './UseEstimateDeposit';
 export * from './404';

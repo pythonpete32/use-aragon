@@ -1,11 +1,11 @@
 import { GasFeeEstimation } from '@aragon/sdk-client';
-import { DepositEthParams } from '@aragon/sdk-client/dist/interfaces';
+import { DepositParams } from '@aragon/sdk-client';
 import { QueryKey, useQuery, UseQueryOptions } from 'react-query';
 
 import { useAragon } from '../../context';
 
 export function useEstimateDeposit(
-  depositParams: DepositEthParams,
+  depositParams: DepositParams,
   options?: UseQueryOptions<GasFeeEstimation | null, unknown, GasFeeEstimation | null, QueryKey>
 ) {
   const { baseClient: client } = useAragon();

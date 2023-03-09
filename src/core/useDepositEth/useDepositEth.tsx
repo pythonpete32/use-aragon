@@ -1,5 +1,5 @@
 import { Client } from '@aragon/sdk-client';
-import { DaoDepositSteps, DepositEthParams } from '@aragon/sdk-client/dist/interfaces';
+import { DaoDepositSteps, DepositParams } from '@aragon/sdk-client';
 import { useReducer } from 'react';
 import { useMutation, UseMutationOptions } from 'react-query';
 
@@ -27,11 +27,11 @@ function reducer(state: DepositState, update: Partial<DepositState>) {
   return { ...state, ...update };
 }
 
-export function useDepositEth(depositParams: DepositEthParams, options?: UseMutationOptions) {
+export function useDepositEth(depositParams: DepositParams, options?: UseMutationOptions) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { baseClient: client } = useAragon();
 
-  const deposit = async (client: Client, depositParams: DepositEthParams) => {
+  const deposit = async (client: Client, depositParams: DepositParams) => {
     const steps = client.methods.deposit(depositParams);
     dispatch({ depositStatus: DepositEthStatus.DEPOSITING });
     for await (const step of steps) {
