@@ -10,6 +10,7 @@ import {
   UseFetchDaoBalances,
   UseEstimateDeposit,
 } from './pages';
+import { UseDepositEth } from './pages/UseDepositEth';
 
 export default function App() {
   return (
@@ -21,7 +22,8 @@ export default function App() {
           <Route path="use-fetch-daos" element={<UseFetchDaos />} />
           <Route path="use-fetch-transfers" element={<UseFetchTransfers />} />
           <Route path="use-fetch-balances" element={<UseFetchDaoBalances />} />
-          <Route path="use-estimate-deposit-eth" element={<UseEstimateDeposit />} />
+          <Route path="use-estimate-deposit" element={<UseEstimateDeposit />} />
+          <Route path="use-deposit-eth" element={<UseDepositEth />} />
 
           <Route path="*" element={<NotFoundTitle />} />
         </Routes>

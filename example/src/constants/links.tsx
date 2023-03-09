@@ -5,6 +5,7 @@ import {
   UseFetchDaoBalances,
   UseEstimateDeposit,
 } from '../pages';
+import { UseDepositEth } from '../pages/UseDepositEth';
 
 export const Links = [
   {
@@ -32,9 +33,14 @@ export const Links = [
         component: UseFetchDaoBalances,
       },
       {
-        link: '/use-estimate-deposit-eth',
-        label: 'useEstimateDepositEth',
+        link: '/use-estimate-deposit',
+        label: 'useEstimateDeposit',
         component: UseEstimateDeposit,
+      },
+      {
+        link: '/use-deposit-eth',
+        label: 'useDepositEth',
+        component: UseDepositEth,
       },
     ],
   },

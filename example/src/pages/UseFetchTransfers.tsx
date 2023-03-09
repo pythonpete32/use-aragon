@@ -37,7 +37,7 @@ export function UseFetchTransfers() {
   }`;
 
   const transfers = useFetchTransfers({
-    daoAddressOrEns: '0x76ad2ab54b29e03920b52c455c97004efc3581d8',
+    daoAddressOrEns: '0x59447788f9dcf2df550f257f3692a07f05b922d7',
   });
 
   return (
