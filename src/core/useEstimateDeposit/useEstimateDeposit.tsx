@@ -4,7 +4,7 @@ import { QueryKey, useQuery, UseQueryOptions } from 'react-query';
 
 import { useAragon } from '../../context';
 
-export function useEstimateDepositEth(
+export function useEstimateDeposit(
   depositParams: DepositEthParams,
   options?: UseQueryOptions<GasFeeEstimation | null, unknown, GasFeeEstimation | null, QueryKey>
 ) {
