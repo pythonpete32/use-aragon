@@ -20,7 +20,7 @@ const client = createClient(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <WagmiConfig client={client}>
-      <AragonProvider>
+      <AragonProvider client={client}>
         <ConnectKitProvider>
           <MantineProvider
             withGlobalStyles
