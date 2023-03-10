@@ -12,7 +12,7 @@ export function useVoteOnProposal(voteParams: IVoteProposalParams, options?: Use
 
   const vote = async () => {
     try {
-      setVoteStatus(VoteStatus.WAITING_FOR_SIGNATURE);
+      setVoteStatus(VoteStatus.WAITING_FOR_SIGNER);
       const steps = client?.methods.voteProposal(voteParams);
 
       setVoteTxHash((await steps?.next()).value.txHash);
