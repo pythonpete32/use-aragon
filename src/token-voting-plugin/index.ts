@@ -5,3 +5,4 @@ export * from './useFetchProposal';
 export * from './useFetchVotingSettings';
 export * from './useFetchVotingToken';
 export * from './useNewProposal';
+export * from './useCanVote';
