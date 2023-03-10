@@ -9,6 +9,7 @@ import {
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useNetwork, useSigner } from 'wagmi';
 import { SUBGRAPH_API_URL, WEB3_PROVIDER_URL } from '../constants';
+// import { activeContractsList } from '@aragon/osx-ethers';
 
 interface AragonSDKWrapperContext {
   children: JSX.Element;
@@ -28,9 +29,11 @@ export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Ele
 
   useEffect(() => {
     const aragonSDKContextParams: ContextParams = {
-      network: chain?.id || 1,
+      network: chain?.id || 5,
       signer,
-      web3Providers: WEB3_PROVIDER_URL[chain?.id || 1],
+      web3Providers: WEB3_PROVIDER_URL[chain?.id || 5],
+      daoFactoryAddress: '0x16B6c6674fEf5d29C9a49EA68A19944f5a8471D3', // GOERLI
+
       ipfsNodes: [
         {
           url: 'https://testing-ipfs-0.aragon.network/api/v0',
@@ -41,7 +44,7 @@ export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Ele
       ],
       graphqlNodes: [
         {
-          url: SUBGRAPH_API_URL[chain?.id || 1],
+          url: SUBGRAPH_API_URL[chain?.id || 5],
         },
       ],
     };
