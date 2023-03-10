@@ -8,7 +8,7 @@ export function UseFetchDao() {
   const demoCode = `import { useFetchDao } from 'use-aragon';
 
 function Demo() {
-  const dao = useFetchDao('0x3d359409d2468901f12fd93a32c3f27c0004a108');
+  const dao = useFetchDao('0x13c6e4f17bbe606fed867a5cd6389a504724e805');
 
   if (dao.isLoading) return <Text>Loading...</Text>;
   if (dao.isError) return <Text>Error!!!</Text>;
@@ -19,7 +19,7 @@ function Demo() {
     </>
   )
 }`;
-  const dao = useFetchDao('0x3d359409d2468901f12fd93a32c3f27c0004a108');
+  const dao = useFetchDao('0x13c6e4f17bbe606fed867a5cd6389a504724e805');
 
   return (
     <Stack spacing="xl" align="center">

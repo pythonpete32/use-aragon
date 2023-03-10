@@ -7,7 +7,9 @@ import {
   TokenVotingClient,
 } from '@aragon/sdk-client';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useSigner } from 'wagmi';
+import { useNetwork, useSigner } from 'wagmi';
+import { SUBGRAPH_API_URL, WEB3_PROVIDER_URL } from '../constants';
+// import { activeContractsList } from '@aragon/osx-ethers';
 
 interface AragonSDKWrapperContext {
   children: JSX.Element;
@@ -21,17 +23,17 @@ export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Ele
   const [tokenVotingClient, setTokenVotingClient] = useState<TokenVotingClient | undefined>(
     undefined
   );
-  const [currentDao, setCurrentDao] = useState<string | undefined>(
-    '0x3d359409d2468901f12fd93a32c3f27c0004a108'
-  );
+  const { chain } = useNetwork();
 
   const signer = useSigner().data ?? undefined;
 
   useEffect(() => {
     const aragonSDKContextParams: ContextParams = {
-      network: 'goerli',
+      network: chain?.id || 5,
       signer,
-      web3Providers: ['https://rpc.ankr.com/eth_goerli'],
+      web3Providers: WEB3_PROVIDER_URL[chain?.id || 5],
+      daoFactoryAddress: '0x16B6c6674fEf5d29C9a49EA68A19944f5a8471D3', // GOERLI
+
       ipfsNodes: [
         {
           url: 'https://testing-ipfs-0.aragon.network/api/v0',
@@ -42,8 +44,7 @@ export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Ele
       ],
       graphqlNodes: [
         {
-          url:
-            'https://subgraph.satsuma-prod.com/qHR2wGfc5RLi6/aragon/osx-mainnet/version/v1.0.0/api', // "https://subgraph.satsuma-prod.com/qHR2wGfc5RLi6/aragon/osx-goerli/version/v1.0.0/api", // url: "https://subgraph.satsuma-prod.com/aragon/core-goerli-2/api",
+          url: SUBGRAPH_API_URL[chain?.id || 5],
         },
       ],
     };
@@ -52,7 +53,7 @@ export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Ele
     setContext(context);
     setBaseClient(new Client(context));
     setTokenVotingClient(new TokenVotingClient(contextPlugin));
-  }, [signer]);
+  }, [signer, chain]);
 
   return (
     <AragonSDKContext.Provider
@@ -60,8 +61,6 @@ export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Ele
         context,
         baseClient,
         tokenVotingClient,
-        currentDao,
-        setCurrentDao,
       }}
     >
       {children}
@@ -70,5 +69,7 @@ export function AragonSDKWrapper({ children }: AragonSDKWrapperContext): JSX.Ele
 }
 
 export function useAragon(): any {
-  return useContext(AragonSDKContext);
+  const context = useContext(AragonSDKContext);
+  if (!context) throw new Error('useAragon hooks must be used within an AragonProvider');
+  return context;
 }

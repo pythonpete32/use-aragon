@@ -21,7 +21,7 @@ export function UseFetchTransfers() {
     direction: SortDirection.ASC,
   };
   
-  const dao = '0x5b6e7c7c4d6f2e1feac7ee5f0f8394f0e1e1f51d';
+  const dao = '0x13c6e4f17bbe606fed867a5cd6389a504724e805';
   
   const Demo = () => {
     // All query params are optional, however you must pass a daoAddressOrEns for the hook to run
@@ -37,7 +37,7 @@ export function UseFetchTransfers() {
   }`;
 
   const transfers = useFetchTransfers({
-    daoAddressOrEns: '0x76ad2ab54b29e03920b52c455c97004efc3581d8',
+    daoAddressOrEns: '0x13c6e4f17bbe606fed867a5cd6389a504724e805',
   });
 
   return (

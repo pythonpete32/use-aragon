@@ -1,5 +1,13 @@
-import { UseFetchDao, Test } from '../pages';
-import { UseFetchTransfers } from '../pages/UseFetchTransfers';
+import {
+  UseFetchDao,
+  Test,
+  UseFetchTransfers,
+  UseFetchDaoBalances,
+  UseEstimateDeposit,
+} from '../pages';
+import { UseDepositERC20 } from '../pages/UseDepositERC20';
+import { UseDepositEth } from '../pages/UseDepositEth';
+
 export const Links = [
   {
     link: '/',
@@ -19,6 +27,26 @@ export const Links = [
         link: '/use-fetch-transfers',
         label: 'useFetchTransfers',
         component: UseFetchTransfers,
+      },
+      {
+        link: '/use-fetch-balances',
+        label: 'useFetchDaoBalances',
+        component: UseFetchDaoBalances,
+      },
+      {
+        link: '/use-estimate-deposit',
+        label: 'useEstimateDeposit',
+        component: UseEstimateDeposit,
+      },
+      {
+        link: '/use-deposit-eth',
+        label: 'useDepositEth',
+        component: UseDepositEth,
+      },
+      {
+        link: '/use-deposit-erc20',
+        label: 'useDepositERC20',
+        component: UseDepositERC20,
       },
     ],
   },
