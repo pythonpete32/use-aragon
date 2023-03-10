@@ -7,8 +7,10 @@ function useHackySigner() {
 
   useEffect(() => {
     async function getSigner() {
+      //@ts-ignore
       if (typeof window.ethereum !== 'undefined') {
         // Create an ethers provider and signer object
+        //@ts-ignore
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const { chainId } = await provider.getNetwork();
         console.log('chainId', chainId);
