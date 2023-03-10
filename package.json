@@ -49,6 +49,7 @@
     }
   ],
   "dependencies": {
+    "@aragon/osx-ethers": "^1.0.0",
     "@aragon/sdk-client": "^1.0.2",
     "ethers": "^5.7.2",
     "react-query": "^3.39.3",
