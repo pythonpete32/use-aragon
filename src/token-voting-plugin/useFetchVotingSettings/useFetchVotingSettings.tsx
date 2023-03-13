@@ -9,7 +9,7 @@ export function useFetchVotingSettings(
   const { tokenVotingClient: client } = useAragon();
 
   return useQuery<VotingSettings | null>({
-    queryKey: ['daoSettings', pluginAddress],
+    queryKey: ['voteSettings', pluginAddress],
     queryFn: async () => client.methods.getVotingSettings(pluginAddress),
     enabled: !!client && !!pluginAddress,
     ...options,

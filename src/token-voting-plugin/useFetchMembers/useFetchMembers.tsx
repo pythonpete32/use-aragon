@@ -14,7 +14,7 @@ export function useFetchMembers(
   const { tokenVotingClient: client, context } = useAragon();
 
   return useQuery<string[] | null>({
-    queryKey: ['dao', pluginAddress],
+    queryKey: ['members', pluginAddress],
     queryFn: async () => client.methods.getMembers(pluginAddress),
     enabled: !!client && !!pluginAddress,
     refetchOnReconnect: true,

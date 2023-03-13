@@ -14,7 +14,7 @@ export function useFetchProposals(
   const { tokenVotingClient: client } = useAragon();
 
   return useQuery<TokenVotingProposalListItem[] | null>({
-    queryKey: ['dao', queryParams],
+    queryKey: ['proposals', queryParams],
     queryFn: async () => client?.methods.getProposals({ ...queryParams }),
     enabled: !!client,
     ...options,
