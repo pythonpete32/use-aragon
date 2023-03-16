@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "use-aragon": "0.0.4-alpha.1",
+    "use-aragon": "*",
     "@emotion/react": "^11.10.6",
     "@mantine/carousel": "^6.0.0",
     "@mantine/core": "^6.0.0",
@@ -36,7 +36,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.2",
-    "wagmi": "^0.12.1"
+    "wagmi": "^0.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
