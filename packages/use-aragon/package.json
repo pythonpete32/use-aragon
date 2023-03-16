@@ -13,8 +13,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "dev": "cd ./example && pnpm dev",
-    "start": "tsdx watch",
+    "dev": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",

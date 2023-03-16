@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npx nx run-many --target=build --all --parallel",
+    "dev": "npx nx run-many --target=dev --all --parallel",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "pythonpete32",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nx": "^15.8.6"
+  }
 }
